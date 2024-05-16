@@ -1,4 +1,4 @@
-Análise de Sentimento
+Porjeto simples de analise de emoções com IA
 
 Este é um projeto de análise de sentimento que identifica se um determinado comentário é positivo, negativo ou neutro com base em um conjunto de palavras definidas.
 
