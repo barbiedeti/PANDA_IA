@@ -11,12 +11,10 @@ def analyze_sentiment():
 
     positivas = set(opinion_lexicon.positive())
     negativas = set(opinion_lexicon.negative())
-    neutras = ["ok", "médio", "apesar", "normal", "contudo", "comum", "todavia", "porém", "no entanto", "mesmo assim"]
 
     # Contagem de palavras positivas, negativas e neutras
     count_positivo = sum(palavra in positivas for palavra in palavras)
     count_negativo = sum(palavra in negativas for palavra in palavras)
-    count_neutro = sum(palavra in neutras for palavra in palavras)
 
     # Verifica se há negação na frase
     for i, palavra in enumerate(palavras[:-1]):
@@ -28,15 +26,13 @@ def analyze_sentiment():
                 count_negativo -= 1
                 count_positivo += 1
 
-    # Verifica se há mais palavras positivas do que negativas e neutras no comentário. Se essa condição for verdadeira, o comentário é considerado positivo.
-    if count_positivo > max(count_negativo, count_neutro):
+    # Verifica se há mais palavras positivas do que negativas.
+    if count_positivo > count_negativo:
         return "Positivo"
-    elif count_negativo > max(count_positivo, count_neutro):
+    elif count_negativo > count_positivo:
         return "Negativo"
-    elif count_neutro > max(count_positivo, count_negativo):
-        return "Neutro"
     else:
-        return "Indeterminado" #
+        return "Indeterminado"
     
 
 # Saída esperada
